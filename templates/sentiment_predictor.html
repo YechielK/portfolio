@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block content %}
+<style>
+    body {
+
+
+
+    background-color: rgb(102, 153, 255); 
+    text-align:center;  
+    padding: 200px 0;
+}
+
+
+</style>
+
+
+<h1>Sentiment Predictor</h1>
+<form class="align-middle" style="vertical-align: middle" action="/predict">
+    <input type="text" placeholder="Enter sentence here" name="sentence" id="sentence"/>
+    <button type="submit">Predict</button>
+</form>
+
+{%if showPrediction%}
+<p>"{{sentence}}" is predicted to be <strong>{{result}}</strong> with {{prob}} confidence</p>
+{% endif %}
+
+<!-- <p style="vertical-align: middle">Your sentence got turned into "{{lemmed}}"</p> -->
+{% endblock %}
