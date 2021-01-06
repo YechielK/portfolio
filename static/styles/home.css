@@ -1,0 +1,17 @@
+body {
+   
+    text-align:center;
+    padding: 15em 0;
+    
+}
+
+p {
+    font-size: 4em; /* 40px/16=2.5em */
+}
+
+.left{
+    float:left; 
+    width:33%;
+    font-size: 2.5em; /* 40px/16=2.5em */
+}
+

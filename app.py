@@ -8,10 +8,10 @@ def home():
     if request.method == 'GET':
         return render_template('home.html')
 
-@app.route('/index', methods=['GET', 'POST'])
+@app.route('/projects', methods=['GET', 'POST'])
 def index():
     if request.method == 'GET':
-        return render_template('index.html')
+        return render_template('projects.html')
 
 @app.route("/sentiment_predictor")
 def sentiment_predictor():

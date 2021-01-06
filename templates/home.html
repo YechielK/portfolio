@@ -1,13 +1,17 @@
 {% extends "layout.html" %}
+{% block title %}Yechiel Kirschner{% endblock %}
+{% block head %}
+  {{ super() }}
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/home.css') }}">
+{% endblock %} 
 {% block content %}
 
-<p>Yechiel Kirschner Personal Website</p>
-<a href="/index" class="btn btn-secondary my-4">Projects</a>
-<br>
-<a href="https://github.com/YechielK">github</a>
-<br>
-<a href="https://www.linkedin.com/in/yechiel-kirschner">linkedin</a>
+<p>Yechiel Kirschner</p>
 
-
+<div class="left"><a href="https://github.com/YechielK">github</a></div>
+<div class="left"><a href="/projects">projects</a></div>
+<div class="left"><a href="https://www.linkedin.com/in/yechiel-kirschner">linkedin</a></div>
 
 {% endblock %}
+
+

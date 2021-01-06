@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block title %}Projects{% endblock %}
+{% block head %}
+  {{ super() }}
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/projects.css') }}">
+{% endblock %} 
+
+{% block content %}
+
+<ul>
+    <li><a href="/bayesian_calculator" >Bayesian Calculator</a></li>
+    <li><a href="/chessboard_code" >Impossible Chessboard Puzzle</a</li>
+    <li><a href="/sentiment_predictor" >Sentiment Predictor</a></li>
+  </ul> 
+
+
+
+{% endblock %}

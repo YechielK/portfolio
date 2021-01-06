@@ -1,17 +1,13 @@
 {% extends "layout.html" %}
+
+{% block title %}Sentiment Predictor{% endblock %}
+{% block head %}
+  {{ super() }}
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/sentiment_predictor.css') }}"
+{% endblock %} 
+
 {% block content %}
-<style>
-    body {
 
-
-
-    background-color: rgb(102, 153, 255); 
-    text-align:center;  
-    padding: 200px 0;
-}
-
-
-</style>
 
 
 <h1>Sentiment Predictor</h1>
