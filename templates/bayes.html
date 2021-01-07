@@ -8,13 +8,13 @@
     <input type="text" placeholder="P(A)" name="a" id="a"/>
     <input type="text" placeholder="P(B|A)" name="bga" id="bga"/>
     <input type="text" placeholder="P(B|A`)" name="bgna" id="bgna"/>
-    <button type="submit">Calcualte</button>
+    <button type="submit">Calculate</button>
 </form>
 
 {% if v %}
 <canvas id="myCanvas" width="720" height="720" style="border:1px solid #d3d3d3;  display: inline-block; float: left; " ></canvas>
 
-<script src="/static/bayes.js" type="text/javascript"></script>
+<script src="/static/scripts/bayes.js" type="text/javascript"></script>
 <script> draw_square({{ v|tojson }}, '{{ a }}', '{{ b }}');</script>
 <script>var data = canvas.toDataURL();
     var prev = window.location.href;
@@ -39,14 +39,21 @@
     <li>P({{ b }}` and {{ a }}`) = P({{ b }}`|{{ a }}`) * P({{ a }}`) = {{ v['not_b_and_not_a'] }}</li>
 
     <!-- b -->
-    <li>P({{ b }}) = ({{ b }} and {{ a }}) + P({{ b }} and {{ a }}`) = {{ v['b']}} </li>
+    <li>P({{ b }}) = P({{ b }} and {{ a }}) + P({{ b }} and {{ a }}`) = {{ v['b']}} </li>
+    <li>P({{ b }}`) = 1 - P({{ b }}) = {{ v['not_b'] }}</li>
+
 
     <!-- final values -->
     <li>P({{ a }}|{{ b }}) = P({{ b }} and {{ a }}) / P({{ b }})     = {{ v['a_given_b'] }}</li>
     <li>P({{ a }}|{{ b }}`) = P({{ b }}` and {{ a }}) / P({{ b }}`)  = {{ v['a_given_not_b'] }}</li>
     <li>P({{ a }}`|{{ b }}) = P({{ b }} and {{ a }}`) / P({{ b }})   = {{ v['not_a_given_b'] }}</li>
     <li>P({{ a }}`|{{ b }}`) = P({{ b }}` and {{ a }}`) / P({{ b }}`)= {{ v['not_a_given_not_b'] }}</li>
-    <li>P({{ b }} or {{ a }}) = P({{ b }}) + P({{ a }}) - P({{ b }}) and P({{ a }})</li>
+    
+    <!-- or  -->
+    <li>P({{ b }} or {{ a }}) = P({{ b }}) + P({{ a }}) - P({{ b }} and {{ a }}) = {{ v['b_or_a'] }}</li>
+    <li>P({{ b }}` or {{ a }}) = P({{ b }}`) + P({{ a }}) - P({{ b }}` and {{ a }}) = {{ v['not_b_or_a'] }}</li>
+    <li>P({{ b }} or {{ a }}`) = P({{ b }}) + P({{ a }}`) - P({{ b }} and {{ a }}`) = {{ v['b_or_not_a'] }}</li>
+    <li>P({{ b }}` or {{ a }}`) = P({{ b }}`) + P({{ a }}`) - P({{ b }}` and {{ a }}`) = {{ v['not_b_or_not_a'] }}</li>
 </ol>
 <p>All P({{ b }}^{{ a }}) variants are relative to the box </p>
 <p>All P({{ b }}|{{ a }}) variants are relative to P({{ a }}) or ({{ a }}`)</p>

@@ -21,17 +21,12 @@ def sentiment_predictor():
 def predict_route():
     sentence = request.args.get("sentence")
     output = predict(sentence)
-
-
     if output == 1:
         output = "Positive"
         prob = g.model.predict_proba(g.X).round(3)[0][1]
-
     else:
         output = "Negative"
         prob = g.model.predict_proba(g.X).round(3)[0][0]
-
-
     return render_template('sentiment_predictor.html', result=output, sentence=sentence, lemmed=g.lemmed, prob=prob, showPrediction=True)
 
 
@@ -58,8 +53,3 @@ def calculate():
         values = bayesian.calculate(x,y,z)
 
         return render_template('bayes.html', v=values, a=a, b=b)
-    # if request.method == 'POST':
-    #     print("tester posr")
-    #     # bayesian.calculate(request.args.get("a"))
-    #     return render_template('bayes.html', foobar=values)
-
