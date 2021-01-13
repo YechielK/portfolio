@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}RSA Encryption{% endblock %}
+{% block head %}
+  {{ super() }}
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/rsa.css') }}">
+{% endblock %} 
+{% block content %}
+
+<h1>RSA Calculator</h1>
+<h6>Enter Prime numbers to generate encryption/decryption keys</h6>
+<!-- <h1>this is a lot of infromation that is gonnab in the thing im typing it not look at mee woee</h1> -->
+
+<form action="/calculate_rsa">    
+    <input type="text" name="p" placeholder="p" id="p"/>
+    <input type="text" name="q" placeholder="q" id="q"/>
+    <button type="submit">Calculate</button>
+</form>
+
+
+{% if k %}
+<p>modulus = p * q = {{ k['p'] }} * {{ k['q'] }} = {{ k['modulus'] }}</p>
+<p>totient = (p - 1) * (q - 1) = ({{ k['p'] }} - 1) * ({{ k['q'] }} - 1) = {{ k['totient'] }}</p>
+<p>enc key = Number that is coprime with totient and modulus =  {{ k['encryption_key'] }}</p>
+<p>dec key = Number that when multiplied by enc key and modded by totient equals 1 = {{ k['decryption_key'] }}</p>
+<p>Encryption Keys = ({{ k['encryption_key'] }}, {{ k['modulus'] }})</p>
+<p>Decryption Keys = ({{ k['decryption_key'] }}, {{ k['modulus'] }})</p>
+
+
+<h6>Enter message to encrypt/decrypt</h6>
+<form action="/calculate_msg">
+    <input type="text" name="msg" placeholder="message" id="msg"/>
+    <button type="submit">Encrypt</button>
+</form>
+{% endif %}
+
+{% if d %}
+<p>Message: {{ d['msg'] }}</p>
+<p>Ascii codes = {{ d['nums'] }}</p>
+<p>Encrypted Ascii codes = each num to the power of {{ d['encryption_key'] }} modded by {{ d['modulus'] }} = {{ d['encrypted_nums'] }}</p>
+<p>Decrypted Ascii codes = each num to the power of {{ d['decryption_key'] }} modded by {{ d['modulus'] }} = {{ d['decrypted_nums'] }}</p>
+<p>Decrypted Message: {{ d['decrypted_msg'] }}</p>
+{% endif %}
+
+{% endblock %}

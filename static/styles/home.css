@@ -2,11 +2,12 @@ body {
    
     text-align:center;
     padding: 15em 0;
-    
+    /* background-color: rgb(24, 24, 24); */
 }
 
 p {
     font-size: 4em; /* 40px/16=2.5em */
+    /* color: rgb(170, 170, 170); */
 }
 
 .left{
