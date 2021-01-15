@@ -25,21 +25,24 @@ body {
       grid-row: row1-start ;
     }
     .b {
-      grid-column: col1-start ;
+      grid-column: col1-start / col3-start;
       grid-row: row2-start;
     }
     .c {
-      grid-column: col2-start;
+      grid-column: col3-start / col5-start;
       grid-row: row2-start ;
     }
-    .d {
+    
+    
+    
+    /* .d {
       grid-column: col3-start ;
       grid-row: row2-start ;
     }
     .e {
       grid-column: col4-start ;
       grid-row: row2-start ;
-    }
+    } */
     .f {
       grid-column: col5-start ;
       grid-row: row2-start ;

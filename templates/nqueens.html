@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block title %}N Queens{% endblock %}
+{% block head %}
+  {{ super() }}
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/nqueens.css') }}">
+{% endblock %} 
+
+
+{% block content %}
+
+<div class="wrapper">
+<div class='a'><canvas class='first' id="myCanvas" width="500%" height="500%" style="border:1px solid #d3d3d3; " ></canvas></div>
+<div class='box b'><button style="width: 110%" onclick="prev({{ a }})">Prev</button></div>
+<div class='box c'><button style="width: 110%" onclick="next({{ a }})">Next</button></div>
+<div class='box f'><p style="width: 110%" id="ans"></p></div>
+</div>
+
+
+
+<script src="/static/scripts/nqueens.js" type="text/javascript"></script>
+<script> window.onload = draw_board({{ a }})</script>
+
+{% endblock %}

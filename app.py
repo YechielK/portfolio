@@ -1,5 +1,7 @@
 from lib.predict import predict
 from flask import Flask, request, render_template, g, session
+import nqueens
+
 import bayesian
 import rsa
 app = Flask(__name__)
@@ -86,6 +88,12 @@ def calculate_msg():
         dict = rsa.calculate(msg, session['keys']['p'], session['keys']['q'])
         print(dict)
         return render_template('rsa.html', k=session['keys'], d=dict)
+
+@app.route('/nqueens_solver', methods=['GET', 'POST'])
+def nqueens_solver():
+    if request.method == 'GET':
+        ans = nqueens.solve()
+        return render_template('nqueens.html', a=ans)
 
 
 
