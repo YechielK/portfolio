@@ -7,6 +7,14 @@
     {% endblock %}
 </head>
 <body>
+
+
+    <div class="navbar-ul"> 
+        <div><a id='home_button' href="{{ url_for('home') }}">home</a></div>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/layout.css') }}">
+
+    </div> 
+
     <div class="container">
         {% block content %}{% endblock %}
     </div>

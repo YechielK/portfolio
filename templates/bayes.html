@@ -1,5 +1,18 @@
 {% extends "layout.html" %}
+
+
+
+{% block title %}Bayesian Calculator{% endblock %}
+{% block head %}
+  {{ super() }}
+  <!-- <link rel="stylesheet" href="{{ url_for('static', filename='styles/bayes.css') }}"> -->
+{% endblock %} 
+
+
+
+
 {% block content %}
+
 
 <div style="position: fixed; padding: 0; margin: 0;">
 <form action="/calculate">    
@@ -26,10 +39,12 @@
 <ol style="display: inline-block; float: left;">
     <!-- initial -->
     <li>P({{ a }}) = {{ v['a'] }}</li>
+    <li>P({{ a }}`) = 1 - P({{ a }}`) = {{ v['not_a'] }}</li>
+
     <li>P({{ b }}|{{ a }}) = {{ v['b_given_a'] }}</li>
     <li>P({{ b }}|{{ a }}`) = {{ v['b_given_not_a'] }}</li>
-    <!-- inverse -->
-    <li>P({{ a }}`) = 1 - P({{ a }}`) = {{ v['not_a'] }}</li>
+
+
     <li>P({{ b }}`|{{ a }}) = 1 - P({{ b }}|{{ a }}) =  {{ v['not_b_given_a'] }}</li>
     <li>P({{ b }}`|{{ a }}`) = 1 - P({{ b }}|{{ a }}`) =  {{ v['not_b_given_not_a'] }}</li>
     <!-- and  -->

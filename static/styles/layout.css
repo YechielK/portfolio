@@ -1,0 +1,10 @@
+ .navbar-ul {
+    background-color: white;
+    /* display: flex; */
+    justify-content: flex-end;
+    width: 100%;
+}
+
+#home_button {
+    font-size: 2em; 
+}
