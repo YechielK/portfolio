@@ -16,7 +16,7 @@ def demorgans(var, values):
         elif len(x) == 2: # not_b_and_not_a
             values['b_or_a'] = 1 - values[var]
         elif x[0] == 0: # not_b_and_a
-            values['b_or_not_a'] = values[var]
+            values['b_or_not_a'] = 1 - values[var]
         else: # b_and_not_a
             values['not_b_or_a'] = 1 - values[var]
     elif 'or' in var:
@@ -26,7 +26,7 @@ def demorgans(var, values):
         elif len(x) == 2: # not_b_or_not_a
             values['b_and_a'] = 1 - values[var]
         elif x[0] == 0: # not_b_or_a
-            values['b_and_not_a'] = values[var]
+            values['b_and_not_a'] = 1 - values[var]
         else: # b_or_not_a
             values['not_b_and_a'] = 1 - values[var]
 

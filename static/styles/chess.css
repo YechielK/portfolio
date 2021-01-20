@@ -1,5 +1,7 @@
 .container {
     margin: 40px;
+    border: 3px solid #fff;
+
   }
   
   .wrapper {
@@ -10,6 +12,12 @@
       background-color: #fff;
       color: #444;
     }
+
+  
+  .float-child {
+      float: left;
+      /* border: 2px solid red; */
+  }  
   
     .box {
       /* background-color: #444; */

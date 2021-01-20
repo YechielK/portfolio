@@ -1,14 +1,14 @@
 var sol = 0;
 
 
-
+size = 8
 
 // draw canvas
 var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
 ctx.clearRect(0, 0, c.width, c.height);
 length = c.width / 1
-square_length = length/8
+square_length = length/size
 
 window.onload() = draw_board(a)
 window.onload() = flip_this()
@@ -35,7 +35,7 @@ function flip_this() {
 
 function draw_board(a) {
     ctx.clearRect(0, 0, c.width, c.height);
-    for (let i = 0; i <= length; i+= length/8) {
+    for (let i = 0; i <= length; i+= length/size) {
         ctx.beginPath();
         ctx.moveTo(i, 0);
         ctx.lineTo(i, length);
@@ -43,7 +43,7 @@ function draw_board(a) {
         ctx.stroke();
     }
   
-    for (let i = 0; i <= length; i+= length/8) {
+    for (let i = 0; i <= length; i+= length/size) {
         ctx.beginPath();
         ctx.moveTo(0, i);
         ctx.lineTo(length, i);
@@ -66,10 +66,10 @@ function draw_target(x, y, l) {
 function add_eight(array) {
 
     for (let i = 1; i < array.length; i++) {
-        array[i] = array[i] + (i*8)
+        array[i] = array[i] + (i*size)
     }
     console.log(array)
-    board = new Array(64)
+    board = new Array(size * size)
     for (let i = 0; i < board.length; i++) {
         if(array.includes(i)) {
             board[i] = 1
@@ -82,10 +82,10 @@ function add_eight(array) {
 }
 
 function draw_targets(dict) {
-    for (let i = 0; i < 64; i++) {
+    for (let i = 0; i < size * size; i++) {
         if (dict[i] == 1) {
-            x = i%8
-            y = Math.floor(i/8)
+            x = i%size
+            y = Math.floor(i/size)
             console.log(x, y)
 
             draw_target(y,x,square_length)
@@ -94,9 +94,3 @@ function draw_targets(dict) {
 }
 
 
-
-
-// function draw_board( a ) {
-//     console.log( a[sol] )
-
-// }

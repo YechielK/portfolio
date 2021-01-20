@@ -16,7 +16,7 @@ def solve():
     while col >= 0:
         col += 1
         if (col == size):
-            print(counter, b)
+            # print(counter, b)
             # dict[counter] = b.copy()
             dict.append(b.copy())
             col -= 1
@@ -30,5 +30,5 @@ def solve():
             else:
                 if (check(b, col)):
                     break  
-    print(dict)
+    # print(dict)
     return dict

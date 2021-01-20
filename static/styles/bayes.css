@@ -1,9 +1,6 @@
-/* body {
-   
+/* .container {
     text-align:center;
     padding: 7.5em 0;
-
-    
 }
 
 li {
@@ -11,3 +8,10 @@ li {
     margin: 0 0 2em 0;
     font-size: 3em;
 } */
+/* .row {
+    display: flex;
+  }
+  
+  .column {
+    flex: 50%;
+  } */

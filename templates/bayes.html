@@ -5,7 +5,7 @@
 {% block title %}Bayesian Calculator{% endblock %}
 {% block head %}
   {{ super() }}
-  <!-- <link rel="stylesheet" href="{{ url_for('static', filename='styles/bayes.css') }}"> -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/bayes.css') }}">
 {% endblock %} 
 
 
@@ -14,13 +14,14 @@
 {% block content %}
 
 
-<div style="position: fixed; padding: 0; margin: 0;">
-<form action="/calculate">    
-    <input type="text" placeholder="A" name="name_a" id="name_a"/>
-    <input type="text" placeholder="B" name="name_b" id="name_b"/>
-    <input type="text" placeholder="P(A)" name="a" id="a"/>
-    <input type="text" placeholder="P(B|A)" name="bga" id="bga"/>
-    <input type="text" placeholder="P(B|A`)" name="bgna" id="bgna"/>
+<div style="padding: 0; margin: 0;">
+
+<form action="/calculate" class="row">    
+    <input type="text" class="column" placeholder="A" name="name_a" id="name_a"/>
+    <input type="text" class="column" placeholder="B" name="name_b" id="name_b"/>
+    <input type="text" class="column" placeholder="P(A)" name="a" id="a"/>
+    <input type="text" class="column" placeholder="P(B|A)" name="bga" id="bga"/>
+    <input type="text" class="column" placeholder="P(B|A`)" name="bgna" id="bgna"/>
     <button type="submit">Calculate</button>
 </form>
 
@@ -70,12 +71,15 @@
     <li>P({{ b }} or {{ a }}`) = P({{ b }}) + P({{ a }}`) - P({{ b }} and {{ a }}`) = {{ v['b_or_not_a'] }}</li>
     <li>P({{ b }}` or {{ a }}`) = P({{ b }}`) + P({{ a }}`) - P({{ b }}` and {{ a }}`) = {{ v['not_b_or_not_a'] }}</li>
 </ol>
-<p>All P({{ b }}^{{ a }}) variants are relative to the box </p>
-<p>All P({{ b }}|{{ a }}) variants are relative to P({{ a }}) or ({{ a }}`)</p>
+<br>
+<p> P({{ b }}^{{ a }}) variants are relative to the whole box</p>
+<p> P({{ b }}|{{ a }}) variants are relative to P({{ a }}) or ({{ a }}`)</p>
 <a id="download" download="triangle.png">
     <button type="button" onClick="download()">Download Graph</button>
     </a>
 </div>
 
 {% endif %}
+<p>A Bayesian calculator that derives as much information from the input as possible and express it geometrically.</p>
+
 {% endblock %}
