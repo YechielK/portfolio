@@ -168,6 +168,7 @@ function result() {
   target_orig = document.getElementById("text").value;
   console.log('res ' + target_orig)
   flip_this(board, target_orig)
+  update_ans()
 }
 
 function flip(board, target) {
@@ -197,6 +198,7 @@ function clear_board() {
   board = board_parity(dict)
   target_dec = target_orig
   flip_this(board, target_dec)
+  update_ans()
 }
 
 function random_board() {
@@ -206,6 +208,8 @@ function random_board() {
   board = board_parity(dict)
 //   document.getElementById("ans").innerHTML ="Flip " + flip_dec;
   flip_this(board, target_orig)
+update_ans()
+
 }
 
 function row_sum(dict, s) {
