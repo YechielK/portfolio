@@ -39,7 +39,7 @@
     }
     .e {
       grid-column: col3-start / col3-end;
-      grid-row: row2-start ;
+      grid-row: row3-start ;
       padding-left: 1em;
     }
 
