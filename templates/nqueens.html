@@ -12,12 +12,35 @@
 <div class='a'><canvas class='first' id="myCanvas" width="500%" height="500%" style="border:1px solid #d3d3d3; " ></canvas></div>
 <div class='box b'><button style="width: 110%" onclick="prev({{ a }})">Prev</button></div>
 <div class='box c'><button style="width: 110%" onclick="next({{ a }})">Next</button></div>
-<div class='box f'><p style="width: 110%" id="ans"></p></div>
+<div class='box d'><p style="width: 110%" id="ans"></p></div>
+</div>
+
+
+<div class='box e'>
+  <form action="/nqueens_solver" class="row"> 
+    {% if s %}   
+    <input type="text" class="column" placeholder="size" name="size" id="size" value='{{ s }}'/>
+    {% else %}
+    <input type="text" class="column" placeholder="size" name="size" id="size" value='8'/>
+    {% endif %}
+    <button type="submit">Change N</button>
+  </form>
 </div>
 
 
 
+
+
 <script src="/static/scripts/nqueens.js" type="text/javascript"></script>
-<script> window.onload = draw_board({{ a }})</script>
+<script> 
+
+{% if s %}
+          window.onload = set_size({{ s }})
+{% endif %}
+
+window.onload = draw_board({{ a }})
+// size = document.getElementById('size')
+
+</script>
 
 {% endblock %}

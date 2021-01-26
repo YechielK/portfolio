@@ -5,6 +5,10 @@ import re
 from flask import g
 
 
+# def test(f):
+#     print(f)
+
+
 def inverse(var, values):
     values['not_' + var] = 1 - values[var]
 
@@ -31,7 +35,7 @@ def demorgans(var, values):
             values['not_b_and_a'] = 1 - values[var]
 
 def calculate(a, bga, bgna):
-    print(a, bga, bgna)
+    # print(a, bga, bgna)
     values = {
         'a': float(a),
         'b_given_a': float(bga),

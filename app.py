@@ -52,10 +52,14 @@ def calculate():
         x = request.args.get("a")
         y = request.args.get("bga")
         z = request.args.get("bgna")
+
+        # f = request.args.to_dict()
+        # bayesian.test(f)
         
         values = bayesian.calculate(x,y,z)
-
         return render_template('bayes.html', v=values, a=a, b=b)
+
+
 
 @app.route('/rsa_encryption', methods=['GET', 'POST'])
 def rsa_encryption():
@@ -92,8 +96,13 @@ def calculate_msg():
 @app.route('/nqueens_solver', methods=['GET', 'POST'])
 def nqueens_solver():
     if request.method == 'GET':
-        ans = nqueens.solve()
-        return render_template('nqueens.html', a=ans)
+        if request.args.get('size') is None:
+            ans = nqueens.solve()
+            return render_template('nqueens.html', a=ans)
+        if request.args.get('size') is not None:
+            size = int(request.args.get('size'))
+            ans = nqueens.solve(size)
+            return render_template('nqueens.html', a=ans, s=size)
 
 
 

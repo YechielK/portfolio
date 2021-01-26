@@ -1,36 +1,60 @@
 var sol = 0;
 
 
+
+
 size = 8
 
 // draw canvas
-var c = document.getElementById("myCanvas");
-var ctx = c.getContext("2d");
-ctx.clearRect(0, 0, c.width, c.height);
-length = c.width / 1
-square_length = length/size
+// window.onload() = start()
 
-window.onload() = draw_board(a)
-window.onload() = flip_this()
+function start() {
+    window.c = document.getElementById("myCanvas");
+    window.ctx = c.getContext("2d");
+    ctx.clearRect(0, 0, c.width, c.height);
+    window.length = c.width / 1
+    window.square_length = length/size
+}
+// var c = document.getElementById("myCanvas");
+// var ctx = c.getContext("2d");
+// ctx.clearRect(0, 0, c.width, c.height);
+// length = c.width / 1
+// square_length = length/size
+
+window.onload = start()
+window.onload = flip_this()
+// window.onload = draw_board(a)
+// window.onload = flip_this()
+
+
+function set_size(s) {
+    size = s
+    start()
+}
 
 function prev(a){
-    sol -= 1
+    if (sol > 0) {
+        sol -= 1
+    } 
     draw_board(a)
     flip_this()
+
 }
 
 
 function next(a){
-    sol += 1
+    if (sol < a.length-1) {
+        sol += 1
+    } 
     draw_board(a)
     flip_this()
-
+    console.log(a.length)
 }
 
 
 function flip_this() {
-    console.log('sol ' + sol)
-    document.getElementById("ans").innerHTML ="Sol " + (sol + 1) ;
+    // console.log('sol ' + sol)
+    document.getElementById("ans").innerHTML ="Solution " + (sol + 1) ;
 }
 
 function draw_board(a) {
@@ -58,8 +82,8 @@ function draw_board(a) {
 }
 
 function draw_target(x, y, l) {
-    ctx.font = length/7 + "px Arial";
-    ctx.fillText("H", x*l, (y+1)*l);
+    ctx.font = square_length/12 + "em Arial";
+    ctx.fillText("Q", x*l, (y+1)*l);
 }
 
 

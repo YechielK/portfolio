@@ -7,9 +7,9 @@ def check(arr, col):
     return True
     
 
-def solve():
+def solve(size=8):
     dict = []
-    size = 8
+    # size = 10
     col = 0
     counter = 0
     b = [0] * size
