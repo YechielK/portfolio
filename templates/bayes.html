@@ -8,9 +8,6 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='styles/bayes.css') }}">
 {% endblock %} 
 
-
-
-
 {% block content %}
 
 
@@ -19,9 +16,34 @@
 <form action="/calculate" class="row">    
     <input type="text" class="column" placeholder="A" name="name_a" id="name_a"/>
     <input type="text" class="column" placeholder="B" name="name_b" id="name_b"/>
+    
     <input type="text" class="column" placeholder="P(A)" name="a" id="a"/>
-    <input type="text" class="column" placeholder="P(B|A)" name="bga" id="bga"/>
-    <input type="text" class="column" placeholder="P(B|A`)" name="bgna" id="bgna"/>
+    <input type="text" class="column" placeholder="P(A`)" name="a`" id="a`"/>
+    <input type="text" class="column" placeholder="P(B`)" name="b`" id="b`"/>
+    <input type="text" class="column" placeholder="P(B`)" name="b`" id="b`"/>
+
+    <input type="text" class="column" placeholder="P(B|A)" name="b|a" id="b|a"/>
+    <input type="text" class="column" placeholder="P(B`|A)" name="b`|a" id="b`|a"/>
+    <input type="text" class="column" placeholder="P(B|A`)" name="b|a`" id="b|a`"/>
+    <input type="text" class="column" placeholder="P(B`|A`)" name="b`|a`" id="b`|a`"/>
+
+    <input type="text" class="column" placeholder="P(A|B)" name="a|b" id="a|b"/>
+    <input type="text" class="column" placeholder="P(A`|B)" name="a`|b" id="a`|b"/>
+    <input type="text" class="column" placeholder="P(A|B`)" name="a|b`" id="a|b`"/>
+    <input type="text" class="column" placeholder="P(A`|B`)" name="a`|b`" id="a`|b`"/>
+
+    <input type="text" class="column" placeholder="P(A^B)" name="a^b" id="a^b"/>
+    <input type="text" class="column" placeholder="P(B^A`)" name="b^a`" id="b^a`"/>
+    <input type="text" class="column" placeholder="P(A`^B`)" name="a`^b`" id="a`^b`"/>
+    <input type="text" class="column" placeholder="P(B`^A)" name="b`^a" id="b`^a"/>
+    
+    <input type="text" class="column" placeholder="P(A||B)" name="a||b" id="a||b"/>
+    <input type="text" class="column" placeholder="P(B||A`)" name="b||a`" id="b||a`"/>
+    <input type="text" class="column" placeholder="P(A`||B`)" name="a`||b`" id="a`||b`"/>
+    <input type="text" class="column" placeholder="P(B`||A)" name="b`||a" id="b`||a"/>
+
+
+
     <button type="submit">Calculate</button>
 </form>
 
@@ -30,53 +52,47 @@
 
 <script src="/static/scripts/bayes.js" type="text/javascript"></script>
 <script> draw_square({{ v|tojson }}, '{{ a }}', '{{ b }}');</script>
-<script>var data = canvas.toDataURL();
-    var prev = window.location.href;
-    window.location.href = data.replace("image/png", "image/octet-stream");
-    window.location.href = prev;</script>
-<!-- <button onclick="draw_circle()">Circle</button>
-<button onclick="draw_square()">Square</button> -->
 
 <ol style="display: inline-block; float: left;">
     <!-- initial -->
     <li>P({{ a }}) = {{ v['a'] }}</li>
-    <li>P({{ a }}`) = 1 - P({{ a }}`) = {{ v['not_a'] }}</li>
+    <li>P({{ a }}`) = 1 - P({{ a }}`) = {{ v['a`'] }}</li>
 
-    <li>P({{ b }}|{{ a }}) = {{ v['b_given_a'] }}</li>
-    <li>P({{ b }}|{{ a }}`) = {{ v['b_given_not_a'] }}</li>
+    <li>P({{ b }}|{{ a }}) = {{ v['b|a'] }}</li>
+    <li>P({{ b }}|{{ a }}`) = {{ v['b|a`'] }}</li>
 
 
-    <li>P({{ b }}`|{{ a }}) = 1 - P({{ b }}|{{ a }}) =  {{ v['not_b_given_a'] }}</li>
-    <li>P({{ b }}`|{{ a }}`) = 1 - P({{ b }}|{{ a }}`) =  {{ v['not_b_given_not_a'] }}</li>
+    <li>P({{ b }}`|{{ a }}) = 1 - P({{ b }}|{{ a }}) =  {{ v['b`|a'] }}</li>
+    <li>P({{ b }}`|{{ a }}`) = 1 - P({{ b }}|{{ a }}`) =  {{ v['b`|a`'] }}</li>
     <!-- and  -->
-    <li>P({{ b }} and {{ a }}) = P({{ b }}|{{ a }}) *   P({{ a }}) = {{ v['b_and_a'] }}</li>
-    <li>P({{ b }}` and {{ a }}) = P({{ b }}`|{{ a }}) *  P({{ a }}) = {{ v['not_b_and_a'] }}</li>
-    <li>P({{ b }} and {{ a }}`) = P({{ b }}|{{ a }}`) *  P({{ a }}`) = {{ v['b_and_not_a'] }}</li>
-    <li>P({{ b }}` and {{ a }}`) = P({{ b }}`|{{ a }}`) * P({{ a }}`) = {{ v['not_b_and_not_a'] }}</li>
+    <li>P({{ b }} and {{ a }}) = P({{ b }}|{{ a }}) *   P({{ a }}) = {{ v['a^b'] }}</li>
+    <li>P({{ b }}` and {{ a }}) = P({{ b }}`|{{ a }}) *  P({{ a }}) = {{ v['b`^a'] }}</li>
+    <li>P({{ b }} and {{ a }}`) = P({{ b }}|{{ a }}`) *  P({{ a }}`) = {{ v['b^a`'] }}</li>
+    <li>P({{ b }}` and {{ a }}`) = P({{ b }}`|{{ a }}`) * P({{ a }}`) = {{ v['a`^b`'] }}</li>
 
     <!-- b -->
     <li>P({{ b }}) = P({{ b }} and {{ a }}) + P({{ b }} and {{ a }}`) = {{ v['b']}} </li>
-    <li>P({{ b }}`) = 1 - P({{ b }}) = {{ v['not_b'] }}</li>
+    <li>P({{ b }}`) = 1 - P({{ b }}) = {{ v['b`'] }}</li>
 
 
     <!-- final values -->
-    <li>P({{ a }}|{{ b }}) = P({{ b }} and {{ a }}) / P({{ b }})     = {{ v['a_given_b'] }}</li>
-    <li>P({{ a }}|{{ b }}`) = P({{ b }}` and {{ a }}) / P({{ b }}`)  = {{ v['a_given_not_b'] }}</li>
-    <li>P({{ a }}`|{{ b }}) = P({{ b }} and {{ a }}`) / P({{ b }})   = {{ v['not_a_given_b'] }}</li>
-    <li>P({{ a }}`|{{ b }}`) = P({{ b }}` and {{ a }}`) / P({{ b }}`)= {{ v['not_a_given_not_b'] }}</li>
+    <li>P({{ a }}|{{ b }}) = P({{ b }} and {{ a }}) / P({{ b }})     = {{ v['a|b'] }}</li>
+    <li>P({{ a }}|{{ b }}`) = P({{ b }}` and {{ a }}) / P({{ b }}`)  = {{ v['a|b`'] }}</li>
+    <li>P({{ a }}`|{{ b }}) = P({{ b }} and {{ a }}`) / P({{ b }})   = {{ v['a`|b'] }}</li>
+    <li>P({{ a }}`|{{ b }}`) = P({{ b }}` and {{ a }}`) / P({{ b }}`)= {{ v['a`|b`'] }}</li>
     
     <!-- or  -->
-    <li>P({{ b }} or {{ a }}) = P({{ b }}) + P({{ a }}) - P({{ b }} and {{ a }}) = {{ v['b_or_a'] }}</li>
-    <li>P({{ b }}` or {{ a }}) = P({{ b }}`) + P({{ a }}) - P({{ b }}` and {{ a }}) = {{ v['not_b_or_a'] }}</li>
-    <li>P({{ b }} or {{ a }}`) = P({{ b }}) + P({{ a }}`) - P({{ b }} and {{ a }}`) = {{ v['b_or_not_a'] }}</li>
-    <li>P({{ b }}` or {{ a }}`) = P({{ b }}`) + P({{ a }}`) - P({{ b }}` and {{ a }}`) = {{ v['not_b_or_not_a'] }}</li>
+    <li>P({{ b }} or {{ a }}) = P({{ b }}) + P({{ a }}) - P({{ b }} and {{ a }}) = {{ v['a||b'] }}</li>
+    <li>P({{ b }}` or {{ a }}) = P({{ b }}`) + P({{ a }}) - P({{ b }}` and {{ a }}) = {{ v['b`||a'] }}</li>
+    <li>P({{ b }} or {{ a }}`) = P({{ b }}) + P({{ a }}`) - P({{ b }} and {{ a }}`) = {{ v['b||a`'] }}</li>
+    <li>P({{ b }}` or {{ a }}`) = P({{ b }}`) + P({{ a }}`) - P({{ b }}` and {{ a }}`) = {{ v['a`||b`'] }}</li>
 </ol>
 <br>
 <p> P({{ b }}^{{ a }}) variants are relative to the whole box</p>
 <p> P({{ b }}|{{ a }}) variants are relative to P({{ a }}) or ({{ a }}`)</p>
-<a id="download" download="triangle.png">
+<a id="download" download="bayes_graph.png">
     <button type="button" onClick="download()">Download Graph</button>
-    </a>
+</a>
 </div>
 
 {% endif %}

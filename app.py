@@ -49,14 +49,16 @@ def calculate():
     if request.method == 'GET':
         a = request.args.get("name_a")
         b = request.args.get("name_b")
-        x = request.args.get("a")
-        y = request.args.get("bga")
-        z = request.args.get("bgna")
 
-        # f = request.args.to_dict()
-        # bayesian.test(f)
+        f = request.args.to_dict()
+        f.pop('name_a')
+        f.pop('name_b')
+        bayesian.test(f)
         
-        values = bayesian.calculate(x,y,z)
+        values = bayesian.i_calculate(f)
+        # print('one', bayesian.calculate(f))
+        print('two', bayesian.i_calculate(f))
+        print(len(bayesian.i_calculate(f)))
         return render_template('bayes.html', v=values, a=a, b=b)
 
 
