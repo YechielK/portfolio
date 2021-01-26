@@ -38,7 +38,7 @@
       padding-left: 1em;
     }
     .e {
-      grid-column: col3-start / col3-end;
+      grid-column: col1-start / col2-start;
       grid-row: row3-start ;
       padding-left: 1em;
     }
