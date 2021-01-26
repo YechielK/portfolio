@@ -32,15 +32,13 @@
 
 
 <script src="/static/scripts/nqueens.js" type="text/javascript"></script>
-<script> 
-
 {% if s %}
-          window.onload = set_size({{ s }})
+<script>window.onload = set_size({{ s }})</script>
 {% endif %}
+<script>window.onload = draw_board({{ a }})</script>
 
-window.onload = draw_board({{ a }})
-// size = document.getElementById('size')
 
-</script>
+
+
 
 {% endblock %}
