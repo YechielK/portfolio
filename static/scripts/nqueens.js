@@ -22,9 +22,7 @@ function start() {
 // square_length = length/size
 
 window.onload = start()
-window.onload = flip_this()
 // window.onload = draw_board(a)
-// window.onload = flip_this()
 
 
 function set_size(s) {
@@ -37,7 +35,7 @@ function prev(a){
         sol -= 1
     } 
     draw_board(a)
-    flip_this()
+    flip_this(a)
 
 }
 
@@ -47,14 +45,14 @@ function next(a){
         sol += 1
     } 
     draw_board(a)
-    flip_this()
+    flip_this(a)
     console.log(a.length)
 }
 
 
-function flip_this() {
+function flip_this(a) {
     // console.log('sol ' + sol)
-    document.getElementById("ans").innerHTML ="Solution " + (sol + 1) ;
+    document.getElementById("ans").innerHTML ="Solution " + (sol + 1) + ' of ' + a.length ;
 }
 
 function draw_board(a) {
@@ -78,6 +76,7 @@ function draw_board(a) {
     board = add_eight(a[sol])
 
     draw_targets(board)
+    flip_this(a)
 
 }
 
